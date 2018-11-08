@@ -1,0 +1,9 @@
+{% extends "rap_lyrics/base.html" %}
+
+{% block content %}
+    <div>
+        <h2>{{ rap.title }}</h2>
+        <time>{{ rap.date_added|date:'M d, Y H:i' }}</time>
+        <p>{{ rap.text|linebreaks }}</p>
+    </div>
+{% endblock content %}

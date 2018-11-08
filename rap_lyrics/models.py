@@ -10,7 +10,7 @@ class Rap(models.Model):
 
     tags = TaggableManager()
 
-    def ___str___(self):
+    def __str__(self):
         """Return a string representation of the model"""
         return self.text
 

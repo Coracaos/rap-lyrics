@@ -4,7 +4,7 @@
     <ul>
         <p>Letras de rap</p>
         {% for rap in raps  %} 
-        <li>{{ rap }}</li>
+            <li><a href="{% url 'rap_lyrics:rap' rap.id %}">{{ rap.title }}</a></li>
         {% empty %}
         <li>No hay letras de rap</li>
         {% endfor %}

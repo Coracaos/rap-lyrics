@@ -1,0 +1,12 @@
+{% extends "rap_lyrics/base.html" %}
+
+{% block content %}
+    <ul>
+        <p>Letras de rap</p>
+        {% for rap in raps  %} 
+        <li>{{ rap }}</li>
+        {% empty %}
+        <li>No hay letras de rap</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

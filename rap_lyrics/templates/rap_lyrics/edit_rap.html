@@ -1,0 +1,10 @@
+{% extends "rap_lyrics/base.html" %}
+
+{% block content %}
+    <p>Editar rap</p>
+    <form action="{% url 'rap_lyrics:edit_rap' rap.id%}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Guardar cambios</button>
+    </form>
+{% endblock content %}

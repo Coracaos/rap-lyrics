@@ -38,5 +38,21 @@ def new_rap(request):
     context = {'form': form} 
     return render(request, 'rap_lyrics/new_rap.html', context) # Page for create a new rap
 
-    
+def edit_rap(request, rap_id):   
+    """Edit rap"""
+    rap = Rap.objects.get(id=rap_id)
 
+    if request.method != 'POST':
+        # Initial request, pre-fil form with the current rap
+        form = RapForm(instance=rap)
+    else:
+        # POST data submitted; process data
+        form = RapForm(instance=rap, data=request.POST) 
+        if form.is_valid():
+            rap = form.save(commit=False)
+            rap.save()
+            form.save_m2m()
+            return HttpResponseRedirect(reverse('rap_lyrics:rap', args=[rap.id]))
+
+    context = {'rap': rap, 'form': form}
+    return render(request, 'rap_lyrics/edit_rap.html', context)
